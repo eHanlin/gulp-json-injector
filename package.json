@@ -1,7 +1,7 @@
 {
   "name": "gulp-json-injector",
   "main": "index.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The injector is able to modify json data.\nAnd you can add some base json data to be extended.\nYou can implement a injector to modify json content, too.",
   "dependencies": {
     "deep-extend": "^0.4.1",

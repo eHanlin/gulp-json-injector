@@ -37,7 +37,7 @@ module.exports = function( opts ){
     if (file.isStream()) return cb(new PluginError('gulp-json-injector', 'Streaming not supported'));
 
     var next = function( data ){
-      file.contents = new Buffer(utf8.decode(JSON.stringify(data)));
+      file.contents = new Buffer(utf8.decode(JSON.stringify(data, null, 2)));
       cb(null, file);
     };
 
