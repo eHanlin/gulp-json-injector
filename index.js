@@ -31,6 +31,7 @@ var decorateJSON = function( bases, json, file ){
 module.exports = function( opts ){
   var inject = opts.inject;
   var bases = getBases(opts.bases || []);
+  var ignoreOtherFormat = opts.ignoreOtherFormat || false;
 
   var injector = function(file, enc, cb){
     if (file.isNull()) return cb(null, file);
@@ -41,10 +42,15 @@ module.exports = function( opts ){
       cb(null, file);
     };
 
-    var json = JSON.parse(file.contents.toString());
-    json = decorateJSON(bases, json, file);
+    try {
+      var json = JSON.parse(file.contents.toString());
+      json = decorateJSON(bases, json, file);
 
-    if ( inject ) inject(json, next, file); else next(json, next, file);
+      if ( inject ) inject(json, next, file); else next(json, next, file);
+    } catch (e) {
+
+      if ( ignoreOtherFormat ) cb(null, file); else console.log(e.stack);
+    }
   };
 
   return through.obj(injector);

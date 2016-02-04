@@ -57,6 +57,8 @@ gulp.task('default', function(){
 
 The **base.path** or **base.contents** is only needed one.
 
+#### ignoreOtherFormat: boolean
+> Ignore other formats for processing.
 
 ## LICENSE
 
