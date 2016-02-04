@@ -7,6 +7,12 @@ And you can add some base json data to be extended.
 
 You can implement a injector to modify json content, too.
 
+## Install
+
+```bash
+npm install gulp-json-injector
+```
+
 ## Usage
 
 ```js
@@ -47,7 +53,7 @@ gulp.task('default', function(){
 
 **base.contents:** A json data base will be extended.
 
-**base.mapping:** Give a **regular expression** to validate file path.
+**base.mapping:** Give a **regular expression** to validate file path. The default is all files.
 
 The **base.path** or **base.contents** is only needed one.
 
