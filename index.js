@@ -1,7 +1,6 @@
 var deepExtend = require('deep-extend');
 var through = require('through2');
 var gutil = require('gulp-util');
-var utf8 = require('utf8');
 var fs = require('fs');
 
 var getBases = function( config ){
@@ -38,7 +37,7 @@ module.exports = function( opts ){
     if (file.isStream()) return cb(new PluginError('gulp-json-injector', 'Streaming not supported'));
 
     var next = function( data ){
-      file.contents = new Buffer(utf8.decode(JSON.stringify(data, null, 2)));
+      file.contents = new Buffer(JSON.stringify(data, null, 2));
       cb(null, file);
     };
 
